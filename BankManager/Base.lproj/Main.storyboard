@@ -194,7 +194,7 @@
                                     <action selector="saveButtonTapped:" destination="iqo-rI-Zmg" eventType="touchUpInside" id="VfU-Nw-G0E"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwy-JW-6Rr">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwy-JW-6Rr">
                                 <rect key="frame" x="20" y="153" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XJH-NY-6Im"/>
@@ -376,13 +376,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5W2-ai-niM">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5W2-ai-niM">
                                 <rect key="frame" x="20" y="180" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2B3-Vv-SYh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="BLe-3L-ZNc">
                                 <rect key="frame" x="0.0" y="250" width="600" height="150"/>
@@ -397,7 +397,7 @@
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcQ-bV-dGY">
-                                <rect key="frame" x="213" y="420" width="175" height="50"/>
+                                <rect key="frame" x="213" y="475" width="175" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="KSr-sC-iVI"/>
@@ -417,7 +417,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="u9Q-WE-86m" firstAttribute="centerX" secondItem="szA-LJ-kyq" secondAttribute="centerX" id="0tV-oE-5pQ"/>
-                            <constraint firstItem="pcQ-bV-dGY" firstAttribute="top" secondItem="BLe-3L-ZNc" secondAttribute="bottom" constant="20" id="5L9-da-DS7"/>
+                            <constraint firstItem="pcQ-bV-dGY" firstAttribute="top" secondItem="BLe-3L-ZNc" secondAttribute="bottom" constant="8" id="5L9-da-DS7"/>
+                            <constraint firstItem="s7I-LT-6tO" firstAttribute="top" secondItem="pcQ-bV-dGY" secondAttribute="bottom" constant="75" id="5Wn-WD-iIW"/>
                             <constraint firstItem="2jT-mZ-zCc" firstAttribute="centerX" secondItem="szA-LJ-kyq" secondAttribute="centerX" id="7yw-wF-FiN"/>
                             <constraint firstItem="2jT-mZ-zCc" firstAttribute="top" secondItem="u9Q-WE-86m" secondAttribute="bottom" constant="8" id="89f-GG-gTy"/>
                             <constraint firstItem="BLe-3L-ZNc" firstAttribute="leading" secondItem="szA-LJ-kyq" secondAttribute="leading" id="Dx9-Rb-8uh"/>
@@ -433,6 +434,11 @@
                             <constraint firstItem="Zda-zu-EHj" firstAttribute="width" secondItem="BLe-3L-ZNc" secondAttribute="width" id="uYT-1t-QFy"/>
                             <constraint firstItem="BLe-3L-ZNc" firstAttribute="top" secondItem="5W2-ai-niM" secondAttribute="bottom" constant="20" id="y9U-Ab-2oI"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5L9-da-DS7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="BLe-3L-ZNc" id="iye-B1-6Be"/>
@@ -487,7 +493,7 @@
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rY-sH-KSQ">
-                                <rect key="frame" x="213" y="420" width="175" height="50"/>
+                                <rect key="frame" x="213" y="475" width="175" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wxR-UN-cPe"/>
@@ -507,12 +513,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Da8-NP-PZy" firstAttribute="centerX" secondItem="QP2-iW-f2V" secondAttribute="centerX" id="2jH-ub-Aj3"/>
+                            <constraint firstItem="PXb-1V-OYt" firstAttribute="top" secondItem="6rY-sH-KSQ" secondAttribute="bottom" constant="75" id="2om-Jx-MCk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Da8-NP-PZy" secondAttribute="trailing" id="2w4-Da-BO3"/>
                             <constraint firstItem="Da8-NP-PZy" firstAttribute="top" secondItem="wSq-98-I7h" secondAttribute="bottom" constant="25" id="59K-wd-HGH"/>
                             <constraint firstItem="x9N-ww-OLg" firstAttribute="centerY" secondItem="7gJ-mY-AIL" secondAttribute="centerY" id="8xO-Og-9h8"/>
                             <constraint firstAttribute="trailing" secondItem="7gJ-mY-AIL" secondAttribute="trailing" id="CPB-RA-cOc"/>
                             <constraint firstItem="Da8-NP-PZy" firstAttribute="leading" secondItem="QP2-iW-f2V" secondAttribute="leadingMargin" id="Ccm-4w-hdw"/>
-                            <constraint firstItem="6rY-sH-KSQ" firstAttribute="top" secondItem="7gJ-mY-AIL" secondAttribute="bottom" constant="20" id="Dpj-SO-aaM"/>
                             <constraint firstItem="6rY-sH-KSQ" firstAttribute="centerX" secondItem="QP2-iW-f2V" secondAttribute="centerX" id="IBg-s7-4jL"/>
                             <constraint firstItem="x9N-ww-OLg" firstAttribute="centerX" secondItem="7gJ-mY-AIL" secondAttribute="centerX" id="Iod-LC-0K2"/>
                             <constraint firstItem="9gy-se-hSx" firstAttribute="centerX" secondItem="QP2-iW-f2V" secondAttribute="centerX" id="N55-yY-Zu6"/>

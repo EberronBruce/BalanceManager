@@ -15,7 +15,6 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var pickerView: UIPickerView!
     
     var adHoc: Bool!
-    var selectDate: String?
     let incomeType = ["Salary","Investments"]
     var income: String?
 
@@ -38,6 +37,10 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        incomeTextField.endEditing(true)
+    }
+    
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -55,25 +58,31 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     
-    
 
     @IBAction func datePickerValueChange(sender: AnyObject) {
-        
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "MM-yyyy"
-//        let strDate = dateFormatter.stringFromDate(datePicker.date)
-//        self.selectDate = strDate
+
         
     }
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
-        let month = getMonth()
-        let year = getYear()
         
-        print(month)
-        print(year)
-        print(income)
-        
+        if incomeTextField.text != nil && incomeTextField.text != "" {
+            
+            let enteredIncome = Double(incomeTextField.text!)!
+            
+            if adHoc == true {
+                //Need adHoc
+                
+                
+            } else {
+                if income == "Salary" {
+                    ShareRecuring.shared.salaryIncome = enteredIncome
+                } else  if income == "Investments" {
+                    ShareRecuring.shared.investmentIncome = enteredIncome
+                }
+            }
+        }
+       
     }
     
     func getMonth() -> String {

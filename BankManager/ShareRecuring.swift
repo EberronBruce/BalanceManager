@@ -34,17 +34,26 @@ class ShareRecuring {
         get {
             return _rentExpense
         }
+        set(expense) {
+            _rentExpense = expense
+        }
     }
     
     var utilExpense: Double {
         get {
             return _utilExpense
         }
+        set(expense) {
+            _utilExpense = expense
+        }
     }
     
     var transportExpense: Double {
         get {
             return _transportExpense
+        }
+        set(expense) {
+            _transportExpense = expense
         }
     }
     
@@ -53,17 +62,26 @@ class ShareRecuring {
             
             return _otherExpense
         }
+        set(expense) {
+            _otherExpense = expense
+        }
     }
     
     var salaryIncome: Double {
         get {
             return _salaryIncome
         }
+        set(expense) {
+            _salaryIncome = expense
+        }
     }
     
     var investmentIncome: Double {
         get {
             return _investmentIncome
+        }
+        set(expense) {
+            _investmentIncome = expense
         }
     }
 }

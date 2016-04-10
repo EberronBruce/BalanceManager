@@ -8,16 +8,23 @@
 
 import UIKit
 
-class ExpenseVC: UIViewController {
+class ExpenseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     @IBOutlet weak var perMonthLabel: UILabel!
     @IBOutlet weak var expenseTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var pickerView: UIPickerView!
     
     var adHoc: Bool!
+    var expensiveType = ["Food","Rent","Utilities","Transportation","Other"]
+    var expense: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        expense = "Food"
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         print(adHoc)
 
@@ -34,23 +41,56 @@ class ExpenseVC: UIViewController {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
     }
     
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return expensiveType.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return expensiveType[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        expense = expensiveType[row]
+    }
+
+    
     @IBAction func saveButtonPressed(sender: AnyObject) {
-        
+        if expenseTextField.text != nil && expenseTextField.text != "" {
+            
+            let enteredIncome = Double(expenseTextField.text!)!
+            
+            if adHoc == true {
+                //Need adHoc
+                
+                
+            } else {
+                switch expense {
+                    case "Food":
+                        ShareRecuring.shared.foodExpense = enteredIncome
+                    break
+                    case "Rent":
+                        ShareRecuring.shared.rentExpense = enteredIncome
+                    break
+                    case "Utilities":
+                        ShareRecuring.shared.utilExpense = enteredIncome
+                    break
+                    case "Transportation":
+                        ShareRecuring.shared.transportExpense = enteredIncome
+                    break
+                    case "Other":
+                        ShareRecuring.shared.otherExpense = enteredIncome
+                    break
+                default:
+                    break
+                }
+            }
+        }
+
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
