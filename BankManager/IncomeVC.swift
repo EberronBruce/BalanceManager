@@ -69,6 +69,8 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         if incomeTextField.text != nil && incomeTextField.text != "" {
             
             let enteredIncome = Double(incomeTextField.text!)!
+            let month = Int(getMonth())
+            let year = Int(getYear())
             
             if adHoc == true {
                 //Need adHoc
@@ -81,6 +83,9 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
                     ShareRecuring.shared.investmentIncome = enteredIncome
                 }
             }
+            
+            print(month)
+            print(year)
         }
        
     }

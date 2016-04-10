@@ -27,6 +27,7 @@
 		7AFBC3D31CBA535500FD1DA3 /* ShareRecuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3D21CBA535500FD1DA3 /* ShareRecuring.swift */; };
 		7AFBC3DA1CBA78DF00FD1DA3 /* Month+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3D81CBA78DF00FD1DA3 /* Month+CoreDataProperties.swift */; };
 		7AFBC3DB1CBA78DF00FD1DA3 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3D91CBA78DF00FD1DA3 /* Month.swift */; };
+		7AFBC3DD1CBAA4BC00FD1DA3 /* SetMonthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3DC1CBAA4BC00FD1DA3 /* SetMonthState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		7AFBC3D21CBA535500FD1DA3 /* ShareRecuring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareRecuring.swift; sourceTree = "<group>"; };
 		7AFBC3D81CBA78DF00FD1DA3 /* Month+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Month+CoreDataProperties.swift"; path = "../Month+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7AFBC3D91CBA78DF00FD1DA3 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Month.swift; path = ../Month.swift; sourceTree = "<group>"; };
+		7AFBC3DC1CBAA4BC00FD1DA3 /* SetMonthState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetMonthState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				7AFBC3CC1CBA45B000FD1DA3 /* CoreData */,
+				7AFBC3DC1CBAA4BC00FD1DA3 /* SetMonthState.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AFBC3D31CBA535500FD1DA3 /* ShareRecuring.swift in Sources */,
+				7AFBC3DD1CBAA4BC00FD1DA3 /* SetMonthState.swift in Sources */,
 				7AFBC3B91CBA27E600FD1DA3 /* MonthTableVC.swift in Sources */,
 				7AFBC3DA1CBA78DF00FD1DA3 /* Month+CoreDataProperties.swift in Sources */,
 				7AFBC3831CBA0C7000FD1DA3 /* BankManager.xcdatamodeld in Sources */,
