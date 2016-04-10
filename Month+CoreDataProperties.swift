@@ -14,10 +14,18 @@ import CoreData
 
 extension Month {
 
-    @NSManaged var name: String?
     @NSManaged var year: NSNumber?
     @NSManaged var currentBalance: NSNumber?
-    @NSManaged var expense: Expense?
-    @NSManaged var income: Income?
+    @NSManaged var foodExpense: NSNumber?
+    @NSManaged var rentExpense: NSNumber?
+    @NSManaged var transportExpense: NSNumber?
+    @NSManaged var utilExpense: NSNumber?
+    @NSManaged var adHocExpense: NSNumber?
+    @NSManaged var otherExpense: NSNumber?
+    @NSManaged var salaryIncome: NSNumber?
+    @NSManaged var investmentIncome: NSNumber?
+    @NSManaged var adHocIncome: NSNumber?
+    @NSManaged var previousBalance: NSNumber?
+    @NSManaged var monthNumber: NSNumber?
 
 }

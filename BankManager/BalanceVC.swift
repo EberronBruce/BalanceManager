@@ -20,7 +20,8 @@ class BalanceVC: UIViewController {
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
         
-        if balanceTextField != nil && balanceTextField != "" {
+        if balanceTextField.text != nil && balanceTextField.text != "" {
+
             let enteredBalance = Double(balanceTextField.text!)!
             print(enteredBalance)
             

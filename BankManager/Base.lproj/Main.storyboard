@@ -384,7 +384,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="BLe-3L-ZNc">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="BLe-3L-ZNc">
                                 <rect key="frame" x="0.0" y="250" width="600" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Z5U-2b-dRp"/>
@@ -392,6 +392,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="481960837.14320397">
                                     <!--2016-04-10 06:00:37 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="datePickerValueChange:" destination="mqY-3q-7Zd" eventType="valueChanged" id="oog-Xt-sai"/>
+                                </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcQ-bV-dGY">
                                 <rect key="frame" x="213" y="420" width="175" height="50"/>
