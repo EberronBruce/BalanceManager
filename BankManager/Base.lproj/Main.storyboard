@@ -117,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gWk-Uo-epu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MonthCell" id="gWk-Uo-epu">
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gWk-Uo-epu" id="BSl-MI-CAc">
@@ -137,7 +137,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="0Q7-Ul-hKM" kind="show" id="AhV-p9-nd9"/>
+                        <segue destination="0Q7-Ul-hKM" kind="show" identifier="ReportSegue" id="AhV-p9-nd9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXC-e6-D1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -180,14 +180,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwy-JW-6Rr">
-                                <rect key="frame" x="20" y="153" width="560" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="XJH-NY-6Im"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOB-7H-m7g">
                                 <rect key="frame" x="213" y="278" width="175" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -198,7 +190,18 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="iqo-rI-Zmg" eventType="touchUpInside" id="VfU-Nw-G0E"/>
+                                </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwy-JW-6Rr">
+                                <rect key="frame" x="20" y="153" width="560" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XJH-NY-6Im"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -211,6 +214,9 @@
                             <constraint firstItem="RdI-JV-Ilu" firstAttribute="centerX" secondItem="ulW-xS-wcn" secondAttribute="centerX" id="yPd-29-MoW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="balanceTextField" destination="cwy-JW-6Rr" id="hHZ-n2-Om1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AS-RP-3qa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -244,6 +250,9 @@
                                 <state key="normal" title="Ad Hoc">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="adHocButtonPressed:" destination="3tN-PQ-AeF" eventType="touchUpInside" id="i5j-J0-xD5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRv-9s-FPz">
                                 <rect key="frame" x="213" y="268" width="175" height="50"/>
@@ -255,6 +264,9 @@
                                 <state key="normal" title="Recurring">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="recurringButtonPressed:" destination="3tN-PQ-AeF" eventType="touchUpInside" id="Tn5-XT-QvI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -268,7 +280,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="mqY-3q-7Zd" kind="show" identifier="" id="rbl-Fy-7Sk"/>
+                        <segue destination="mqY-3q-7Zd" kind="show" identifier="IncomeSegue" id="rbl-Fy-7Sk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exL-nO-bqq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -297,6 +309,9 @@
                                 <state key="normal" title="Recurring">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="recurringButtonPressed:" destination="OWX-MC-gDc" eventType="touchUpInside" id="HAR-ex-5rQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xic-2n-UnR">
                                 <rect key="frame" x="213" y="168" width="175" height="50"/>
@@ -308,6 +323,9 @@
                                 <state key="normal" title="Ad Hoc">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="adHocButtonPressed:" destination="OWX-MC-gDc" eventType="touchUpInside" id="7wT-hq-MkN"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Kind of Expense" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QsG-jT-jw9">
                                 <rect key="frame" x="168" y="89" width="265" height="29"/>
@@ -327,7 +345,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="jgp-YE-nsI" kind="show" id="KrC-1v-q1F"/>
+                        <segue destination="jgp-YE-nsI" kind="show" identifier="ExpenseSegue" id="KrC-1v-q1F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J1X-01-vuz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -385,7 +403,13 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="mqY-3q-7Zd" eventType="touchUpInside" id="8tz-No-ooX"/>
+                                </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zda-zu-EHj">
+                                <rect key="frame" x="0.0" y="250" width="600" height="150"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -395,14 +419,24 @@
                             <constraint firstItem="2jT-mZ-zCc" firstAttribute="top" secondItem="u9Q-WE-86m" secondAttribute="bottom" constant="8" id="89f-GG-gTy"/>
                             <constraint firstItem="BLe-3L-ZNc" firstAttribute="leading" secondItem="szA-LJ-kyq" secondAttribute="leading" id="Dx9-Rb-8uh"/>
                             <constraint firstItem="5W2-ai-niM" firstAttribute="leading" secondItem="szA-LJ-kyq" secondAttribute="leadingMargin" id="LOz-Gv-NJQ"/>
+                            <constraint firstItem="Zda-zu-EHj" firstAttribute="height" secondItem="BLe-3L-ZNc" secondAttribute="height" id="Lgh-3k-fof"/>
                             <constraint firstItem="pcQ-bV-dGY" firstAttribute="centerX" secondItem="szA-LJ-kyq" secondAttribute="centerX" id="QY9-p2-nV8"/>
                             <constraint firstItem="5W2-ai-niM" firstAttribute="top" secondItem="2jT-mZ-zCc" secondAttribute="bottom" constant="25" id="QvL-jG-cbh"/>
                             <constraint firstAttribute="trailing" secondItem="BLe-3L-ZNc" secondAttribute="trailing" id="TY1-PX-Loo"/>
                             <constraint firstItem="u9Q-WE-86m" firstAttribute="top" secondItem="nNK-em-e5H" secondAttribute="bottom" constant="25" id="egt-Cw-eu5"/>
                             <constraint firstItem="5W2-ai-niM" firstAttribute="trailing" secondItem="szA-LJ-kyq" secondAttribute="trailingMargin" id="fyG-q5-5ha"/>
+                            <constraint firstItem="Zda-zu-EHj" firstAttribute="centerY" secondItem="BLe-3L-ZNc" secondAttribute="centerY" id="hum-B0-7tx"/>
+                            <constraint firstItem="Zda-zu-EHj" firstAttribute="centerX" secondItem="BLe-3L-ZNc" secondAttribute="centerX" id="sH9-iZ-yRd"/>
+                            <constraint firstItem="Zda-zu-EHj" firstAttribute="width" secondItem="BLe-3L-ZNc" secondAttribute="width" id="uYT-1t-QFy"/>
                             <constraint firstItem="BLe-3L-ZNc" firstAttribute="top" secondItem="5W2-ai-niM" secondAttribute="bottom" constant="20" id="y9U-Ab-2oI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="BLe-3L-ZNc" id="iye-B1-6Be"/>
+                        <outlet property="incomeTextField" destination="5W2-ai-niM" id="4Fl-LS-Kdt"/>
+                        <outlet property="perMonthLabel" destination="2jT-mZ-zCc" id="GGd-r7-iLb"/>
+                        <outlet property="pickerView" destination="Zda-zu-EHj" id="zNI-Rn-JeA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxn-Sb-CyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -459,25 +493,41 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="jgp-YE-nsI" eventType="touchUpInside" id="fAZ-Kr-rd3"/>
+                                </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9N-ww-OLg">
+                                <rect key="frame" x="0.0" y="250" width="600" height="150"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Da8-NP-PZy" firstAttribute="centerX" secondItem="QP2-iW-f2V" secondAttribute="centerX" id="2jH-ub-Aj3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Da8-NP-PZy" secondAttribute="trailing" id="2w4-Da-BO3"/>
                             <constraint firstItem="Da8-NP-PZy" firstAttribute="top" secondItem="wSq-98-I7h" secondAttribute="bottom" constant="25" id="59K-wd-HGH"/>
+                            <constraint firstItem="x9N-ww-OLg" firstAttribute="centerY" secondItem="7gJ-mY-AIL" secondAttribute="centerY" id="8xO-Og-9h8"/>
                             <constraint firstAttribute="trailing" secondItem="7gJ-mY-AIL" secondAttribute="trailing" id="CPB-RA-cOc"/>
                             <constraint firstItem="Da8-NP-PZy" firstAttribute="leading" secondItem="QP2-iW-f2V" secondAttribute="leadingMargin" id="Ccm-4w-hdw"/>
                             <constraint firstItem="6rY-sH-KSQ" firstAttribute="top" secondItem="7gJ-mY-AIL" secondAttribute="bottom" constant="20" id="Dpj-SO-aaM"/>
                             <constraint firstItem="6rY-sH-KSQ" firstAttribute="centerX" secondItem="QP2-iW-f2V" secondAttribute="centerX" id="IBg-s7-4jL"/>
+                            <constraint firstItem="x9N-ww-OLg" firstAttribute="centerX" secondItem="7gJ-mY-AIL" secondAttribute="centerX" id="Iod-LC-0K2"/>
                             <constraint firstItem="9gy-se-hSx" firstAttribute="centerX" secondItem="QP2-iW-f2V" secondAttribute="centerX" id="N55-yY-Zu6"/>
                             <constraint firstItem="7gJ-mY-AIL" firstAttribute="top" secondItem="Da8-NP-PZy" secondAttribute="bottom" constant="20" id="St4-u7-dep"/>
+                            <constraint firstItem="x9N-ww-OLg" firstAttribute="height" secondItem="7gJ-mY-AIL" secondAttribute="height" id="T4l-7w-cdP"/>
                             <constraint firstItem="7gJ-mY-AIL" firstAttribute="leading" secondItem="QP2-iW-f2V" secondAttribute="leading" id="TOr-VS-0cz"/>
                             <constraint firstItem="wSq-98-I7h" firstAttribute="top" secondItem="9gy-se-hSx" secondAttribute="bottom" constant="8" id="b6O-FW-Ayk"/>
                             <constraint firstItem="9gy-se-hSx" firstAttribute="top" secondItem="zTq-Zg-OKx" secondAttribute="bottom" constant="25" id="dze-cz-PwA"/>
                             <constraint firstItem="wSq-98-I7h" firstAttribute="centerX" secondItem="QP2-iW-f2V" secondAttribute="centerX" id="kff-qR-HKe"/>
+                            <constraint firstItem="x9N-ww-OLg" firstAttribute="width" secondItem="7gJ-mY-AIL" secondAttribute="width" id="mbm-7m-0VV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="7gJ-mY-AIL" id="T81-vf-GCx"/>
+                        <outlet property="expenseTextField" destination="Da8-NP-PZy" id="olQ-aT-Y31"/>
+                        <outlet property="perMonthLabel" destination="wSq-98-I7h" id="Pf5-md-zsd"/>
+                        <outlet property="pickerView" destination="x9N-ww-OLg" id="FSA-dc-dKz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dil-RE-mHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,29 +7,44 @@
 //
 
 import UIKit
+import CoreData
 
 class BalanceVC: UIViewController {
+    @IBOutlet weak var balanceTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func saveButtonTapped(sender: AnyObject) {
+        
+        if balanceTextField != nil && balanceTextField != "" {
+            let enteredBalance = Double(balanceTextField.text!)!
+            print(enteredBalance)
+            
+            saveBalanceIntoCoreData(enteredBalance)
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func saveBalanceIntoCoreData(enterNumber: Double) {
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let entity = NSEntityDescription.entityForName("Balance", inManagedObjectContext: context)
+        let balance = Balance(entity: entity!, insertIntoManagedObjectContext: context)
+        
+        balance.totalBalance = enterNumber
+        
+        context.insertObject(balance)
+        
+        do {
+            try context.save()
+        } catch {
+            print("Could not save balance")
+        }
+    
     }
-    */
 
 }

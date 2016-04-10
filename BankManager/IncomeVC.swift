@@ -9,18 +9,30 @@
 import UIKit
 
 class IncomeVC: UIViewController {
+    @IBOutlet weak var perMonthLabel: UILabel!
+    @IBOutlet weak var incomeTextField: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    var adHoc: Bool!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if adHoc == true {
+            pickerView.hidden = true
+            datePicker.hidden = false
+            perMonthLabel.text = "Date Recieve"
+        } else {
+            pickerView.hidden = false
+            datePicker.hidden = true
+            perMonthLabel.text = "Per Month"
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    @IBAction func saveButtonPressed(sender: AnyObject) {
+    }
 
     /*
     // MARK: - Navigation
