@@ -1,5 +1,5 @@
 //
-//  Balance+CoreDataProperties.swift
+//  Expense+CoreDataProperties.swift
 //  BankManager
 //
 //  Created by Bruce Burgess on 4/11/16.
@@ -12,10 +12,12 @@
 import Foundation
 import CoreData
 
-extension Balance {
+extension Expense {
 
-    @NSManaged var totalBalance: NSNumber?
-    @NSManaged var startYear: NSNumber?
-    @NSManaged var startMonth: NSNumber?
+    @NSManaged var food: NSNumber?
+    @NSManaged var util: NSNumber?
+    @NSManaged var rent: NSNumber?
+    @NSManaged var transport: NSNumber?
+    @NSManaged var other: NSNumber?
 
 }

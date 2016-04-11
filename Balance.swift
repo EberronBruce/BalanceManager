@@ -2,7 +2,7 @@
 //  Balance.swift
 //  BankManager
 //
-//  Created by Bruce Burgess on 4/10/16.
+//  Created by Bruce Burgess on 4/11/16.
 //  Copyright © 2016 Red Raven Computing Studios. All rights reserved.
 //
 

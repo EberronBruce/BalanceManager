@@ -1,5 +1,5 @@
 //
-//  Balance+CoreDataProperties.swift
+//  Income+CoreDataProperties.swift
 //  BankManager
 //
 //  Created by Bruce Burgess on 4/11/16.
@@ -12,10 +12,9 @@
 import Foundation
 import CoreData
 
-extension Balance {
+extension Income {
 
-    @NSManaged var totalBalance: NSNumber?
-    @NSManaged var startYear: NSNumber?
-    @NSManaged var startMonth: NSNumber?
+    @NSManaged var salary: NSNumber?
+    @NSManaged var investments: NSNumber?
 
 }

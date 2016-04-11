@@ -20,6 +20,27 @@ class ShareRecuring {
     private var _salaryIncome = 0.0
     private var _investmentIncome = 0.0
     
+    private var _startDateMonth = 1
+    private var _startDateYear = 2016
+    
+    var startDateMonth: Int {
+        get{
+            return _startDateMonth
+        }
+        set(month) {
+            _startDateMonth = month
+        }
+    }
+    
+    var startDateYear: Int {
+        get {
+            return _startDateYear
+        }
+        set(year) {
+            _startDateYear = year
+        }
+    }
+    
     var foodExpense: Double {
         get {
             return _foodExpense

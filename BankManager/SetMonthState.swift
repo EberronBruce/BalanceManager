@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 class SetMonthState {
+    
+    //Need to think through this more
+    
     
     let month = ["January","February","March","April","May","June","July","August","September","October","November", "December"]
     
@@ -42,6 +47,23 @@ class SetMonthState {
         default:
             break
         }
+    }
+    
+    func saveMonthAdHocExpense(monthName: String, adHoc: Double) {
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let entity = NSEntityDescription.entityForName(monthName, inManagedObjectContext: context)
+        let month = Month(entity: entity!, insertIntoManagedObjectContext: context)
+        
+        month.adHocExpense = adHoc
+        
+        context.insertObject(month)
+        
+        do {
+            try context.save()
+        } catch {
+            print("Could not save balance")
+        }
+
     }
     
     func getMonth(monthNumber: Int) {

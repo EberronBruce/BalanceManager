@@ -180,8 +180,16 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwy-JW-6Rr">
+                                <rect key="frame" x="20" y="153" width="560" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XJH-NY-6Im"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOB-7H-m7g">
-                                <rect key="frame" x="213" y="278" width="175" height="50"/>
+                                <rect key="frame" x="213" y="425" width="175" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="FiO-5S-p8B"/>
@@ -194,28 +202,41 @@
                                     <action selector="saveButtonTapped:" destination="iqo-rI-Zmg" eventType="touchUpInside" id="VfU-Nw-G0E"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwy-JW-6Rr">
-                                <rect key="frame" x="20" y="153" width="560" height="50"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CIW-vW-FPd">
+                                <rect key="frame" x="0.0" y="255" width="600" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="XJH-NY-6Im"/>
+                                    <constraint firstAttribute="height" constant="150" id="HM1-ef-SWL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
-                            </textField>
+                                <date key="date" timeIntervalSinceReferenceDate="482066526.62933999">
+                                    <!--2016-04-11 11:22:06 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fjs-E9-kyT">
+                                <rect key="frame" x="238" y="211" width="124" height="29"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CIW-vW-FPd" firstAttribute="top" secondItem="Fjs-E9-kyT" secondAttribute="bottom" constant="15" id="046-Yy-juY"/>
+                            <constraint firstAttribute="trailing" secondItem="CIW-vW-FPd" secondAttribute="trailing" id="0yo-lQ-sRN"/>
                             <constraint firstItem="VOB-7H-m7g" firstAttribute="centerX" secondItem="ulW-xS-wcn" secondAttribute="centerX" id="6MQ-sF-ISJ"/>
+                            <constraint firstItem="Fjs-E9-kyT" firstAttribute="top" secondItem="cwy-JW-6Rr" secondAttribute="bottom" constant="8" id="9sF-gU-v2C"/>
+                            <constraint firstItem="VOB-7H-m7g" firstAttribute="top" secondItem="CIW-vW-FPd" secondAttribute="bottom" constant="20" id="BPQ-AS-obf"/>
+                            <constraint firstItem="Fjs-E9-kyT" firstAttribute="centerX" secondItem="ulW-xS-wcn" secondAttribute="centerX" id="E2U-Id-svl"/>
                             <constraint firstItem="cwy-JW-6Rr" firstAttribute="leading" secondItem="ulW-xS-wcn" secondAttribute="leadingMargin" id="NlQ-We-sKQ"/>
-                            <constraint firstItem="VOB-7H-m7g" firstAttribute="top" secondItem="cwy-JW-6Rr" secondAttribute="bottom" constant="75" id="QIA-r5-Wbk"/>
                             <constraint firstItem="cwy-JW-6Rr" firstAttribute="trailing" secondItem="ulW-xS-wcn" secondAttribute="trailingMargin" id="bat-uM-MKe"/>
                             <constraint firstItem="cwy-JW-6Rr" firstAttribute="top" secondItem="RdI-JV-Ilu" secondAttribute="bottom" constant="50" id="dL1-bN-yve"/>
                             <constraint firstItem="RdI-JV-Ilu" firstAttribute="top" secondItem="sN4-kj-m8E" secondAttribute="bottom" constant="10" id="f4i-30-iS7"/>
+                            <constraint firstItem="CIW-vW-FPd" firstAttribute="leading" secondItem="ulW-xS-wcn" secondAttribute="leading" id="hBm-M5-bXI"/>
                             <constraint firstItem="RdI-JV-Ilu" firstAttribute="centerX" secondItem="ulW-xS-wcn" secondAttribute="centerX" id="yPd-29-MoW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="balanceTextField" destination="cwy-JW-6Rr" id="hHZ-n2-Om1"/>
+                        <outlet property="datePicker" destination="CIW-vW-FPd" id="nEk-Pz-WVM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AS-RP-3qa" userLabel="First Responder" sceneMemberID="firstResponder"/>

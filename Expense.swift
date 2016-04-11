@@ -1,5 +1,5 @@
 //
-//  Month.swift
+//  Expense.swift
 //  BankManager
 //
 //  Created by Bruce Burgess on 4/11/16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Month: NSManagedObject {
+class Expense: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

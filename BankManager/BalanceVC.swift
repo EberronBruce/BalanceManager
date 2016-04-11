@@ -11,7 +11,8 @@ import CoreData
 
 class BalanceVC: UIViewController {
     @IBOutlet weak var balanceTextField: UITextField!
-
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,18 +30,46 @@ class BalanceVC: UIViewController {
             let enteredBalance = Double(balanceTextField.text!)!
             print(enteredBalance)
             
-            saveBalanceIntoCoreData(enteredBalance)
+            let month = Int(getMonth())!
+            let year = Int(getYear())!
+            
+            print(month)
+            print(year)
+            
+            saveBalanceIntoCoreData(enteredBalance, month: month, year: year)
             self.navigationController?.popViewControllerAnimated(true)
         }
         
     }
     
-    func saveBalanceIntoCoreData(enterNumber: Double) {
+    func getMonth() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM"
+        let strDate = dateFormatter.stringFromDate(datePicker.date)
+        
+        return strDate
+        
+    }
+    
+    
+    func getYear() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let strDate = dateFormatter.stringFromDate(datePicker.date)
+        
+        return strDate
+        
+    }
+
+
+    func saveBalanceIntoCoreData(enterNumber: Double, month: Int, year: Int) {
         let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         let entity = NSEntityDescription.entityForName("Balance", inManagedObjectContext: context)
         let balance = Balance(entity: entity!, insertIntoManagedObjectContext: context)
         
         balance.totalBalance = enterNumber
+        balance.startMonth = month
+        balance.startYear = year
         
         context.insertObject(balance)
         

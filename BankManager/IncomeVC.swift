@@ -73,7 +73,7 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
             let year = Int(getYear())
             
             if adHoc == true {
-                //Need adHoc
+                
                 
                 
             } else {
