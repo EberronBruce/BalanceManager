@@ -70,11 +70,14 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         if incomeTextField.text != nil && incomeTextField.text != "" {
             
             let enteredIncome = Double(incomeTextField.text!)!
-            let month = Int(getMonth())
-            let year = Int(getYear())
+            
             
             if adHoc == true {
-                //Need adHoc
+               
+                let month = Int(getMonth())!
+                let year = Int(getYear())!
+                
+                saveMonthAdHoc(month, year: year)
                 
                 
             } else {
@@ -87,10 +90,22 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
                 }
             }
             
-            print(month)
-            print(year)
         }
-        
+    }
+    
+    func saveMonthAdHoc(monthNumber: Int, year: Int) {
+        if let loadedMonth = NSUserDefaults.standardUserDefaults().objectForKey("Month") as? NSData {
+            if let monthArray = NSKeyedUnarchiver.unarchiveObjectWithData(loadedMonth) as? [Month] {
+                
+                for month in monthArray {
+                    if month.month == monthNumber {
+                        print(month.name)
+                    }
+                }
+                
+            }
+        }
+
     }
     
     func saveReccuringToCoreData(type: String, payment: Double) {

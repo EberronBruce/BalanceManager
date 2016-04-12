@@ -186,11 +186,11 @@
 				7AFBC37C1CBA0C7000FD1DA3 /* ViewController.swift */,
 				7AFBC3AE1CBA26F100FD1DA3 /* BalanceVC.swift */,
 				7AFBC3B01CBA272700FD1DA3 /* KindIncomeVC.swift */,
+				7AFBC3F61CBD081500FD1DA3 /* IncomeVC.swift */,
 				7AFBC3B41CBA278D00FD1DA3 /* KindExpenseVC.swift */,
 				7AFBC3B61CBA27A800FD1DA3 /* ExpenseVC.swift */,
 				7AFBC3B81CBA27E600FD1DA3 /* MonthTableVC.swift */,
 				7AFBC3BA1CBA27FB00FD1DA3 /* ReportVC.swift */,
-				7AFBC3F61CBD081500FD1DA3 /* IncomeVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

@@ -26,6 +26,12 @@ class Month: NSObject, NSCoding {
         }
     }
     
+    var month: Int {
+        get {
+            return _month
+        }
+    }
+    
     var adHocExpense: Double {
         get {
             return _adHocExpense
