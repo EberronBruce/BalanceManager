@@ -9,6 +9,12 @@
 import UIKit
 
 class MonthTableVC: UIViewController {
+    
+    var expenses: [Double] = []
+    var incomes: [Double] = []
+    var previousBalance: [Double] = []
+    var currentBalance: [Double] = []
+    var monthOrder: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,6 +15,7 @@ class Month: NSObject, NSCoding {
     private var _year: Int!
     private var _month: Int!
     private var _name: String!
+    private var _currentBalance: Double!
     
     var income: Double {
         get {
@@ -57,6 +58,15 @@ class Month: NSObject, NSCoding {
         }
     }
     
+    var currentBalance: Double {
+        get {
+            return _currentBalance
+        }
+        set(balance) {
+            _currentBalance = balance
+        }
+    }
+    
     
     init(month: Int, year: Int) {
         let setMonth = SetMonthState()
@@ -65,6 +75,7 @@ class Month: NSObject, NSCoding {
         _year = year
         _adHocIncome = 0.0
         _adHocExpense = 0.0
+        _currentBalance = 0.0
     }
 
     override init() {

@@ -77,7 +77,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="twp-Wd-Yyv" kind="show" id="tu4-BE-fu5"/>
+                                    <action selector="reportsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nmU-K4-ASH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -96,6 +96,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0pu-OE-wie"/>
+                    <connections>
+                        <segue destination="twp-Wd-Yyv" kind="show" identifier="Reports" id="9Q3-ZT-kFL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

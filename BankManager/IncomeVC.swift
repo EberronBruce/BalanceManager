@@ -116,14 +116,14 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         if let loadedMonth = NSUserDefaults.standardUserDefaults().objectForKey("Month") as? NSData {
             if let monthArray = NSKeyedUnarchiver.unarchiveObjectWithData(loadedMonth) as? [Month] {
                 
-                if ((startYear+1) >= year) && (monthNumber < startMonth) {
+                if ((startYear+1) >= year) && (monthNumber < startMonth) && (startYear < year) {
                     showYearAlert()
                 } else {
                     
                     for month in monthArray {
                         if month.month == monthNumber {
                             month.income = payment
-                            
+                            month.year = year
                         }
                     }
                     
