@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     
     var expenses: [Double] = []
     var incomes: [Double] = []
+    var previousBalance: [Double] = []
+    var currentBalance: [Double] = []
     var monthNames: [String] = []
     var months: [Month] = []
 
@@ -70,6 +72,29 @@ class ViewController: UIViewController {
             NSUserDefaults.standardUserDefaults().synchronize()
          
         }
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+//        if let didRun = NSUserDefaults.standardUserDefaults().valueForKey("FirstRun") as? Bool {
+//            let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+//            //doing a fetch request of the collections entity
+//            let request = NSFetchRequest(entityName: "Balance")
+//            do{
+//                if let results = try context.executeFetchRequest(request) as? [Balance] {
+//                    let number = Double((results[0].totalBalance)!)
+//                    
+//                    
+//                    print("View Will Appear: \(number) ")
+//                }
+//                
+//                
+//                
+//                
+//            } catch {
+//                
+//            }
+//        }
 
     }
     
@@ -153,12 +178,19 @@ class ViewController: UIViewController {
     }
 //--------------------------------------------------------------------------------
     @IBAction func reportsPressed(sender: AnyObject) {
-        calaculateData()
+        setData()
         
         performSegueWithIdentifier("Reports", sender: nil)
     }
     
-    func calaculateData() {
+    func setData() {
+        self.expenses = []
+        self.incomes = []
+        self.previousBalance = []
+        self.currentBalance = []
+        self.monthNames = []
+        self.months = []
+
         
         let startMonth = getStartMonth()
         let startYear = getStartYear()
@@ -168,10 +200,11 @@ class ViewController: UIViewController {
         } else {
             
             setFirstElementForTable(startMonth, startYear: startYear)
+            calculateCurrentBalance()
         
         }
     }
-    
+//------------------------------------------------------------------------------
     func setFirstElementForTable(startMonth: Int, startYear: Int) {
         if let loadedMonth = NSUserDefaults.standardUserDefaults().objectForKey("Month") as? NSData {
             if let monthArray = NSKeyedUnarchiver.unarchiveObjectWithData(loadedMonth) as? [Month] {
@@ -191,7 +224,7 @@ class ViewController: UIViewController {
                         }
                         print("\(monthArray[finish].name) \(monthArray[finish].year)")
                         monthNames.append("\(monthArray[finish].name) \(monthArray[finish].year)")
-                        months.append(monthArray[month])
+                        months.append(monthArray[finish])
                         finish += 1
                     }
                 
@@ -205,11 +238,111 @@ class ViewController: UIViewController {
                 
             }
         }
-
-        
-        
+  
     }
     
+    func calculateCurrentBalance() {
+        let income = getTotalRecurringIncomes()
+        let expense = getTotalRecurringExpenses()
+        let startBalance = getStartBalance()
+        
+        if income == -1 || expense == -1 || startBalance == -1 {
+            print("We have a serious problem")
+        } else {
+            var currentIndex = 0
+            for month in months {
+                if month == months[0] {
+                    previousBalance.append(startBalance)
+                    let currentMoney = startBalance + income + month.income - expense - month.expense
+                    month.currentBalance = currentMoney
+                    currentBalance.append(currentMoney)
+                } else {
+                    previousBalance.append(currentBalance[currentIndex - 1])
+                    let currentMoney = currentBalance[currentIndex - 1] + income + month.income - expense - month.expense
+                    month.currentBalance = currentMoney
+                    currentBalance.append(currentMoney)
+                }
+                currentIndex += 1
+            }
+        }
+        
+       
+    }
+    
+    func getTotalRecurringIncomes() -> Double {
+        var totalIncome: Double
+        
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Income")
+        
+        do {
+            let fetchedIncome = try context.executeFetchRequest(fetchRequest) as! [Income]
+            
+            let salary = Double((fetchedIncome.first?.salary)!)
+            let investment = Double((fetchedIncome.first?.investments)!)
+            
+            totalIncome = salary + investment
+            
+            return totalIncome
+            
+        } catch {
+            print("Didn't get start month from core data for income")
+        }
+        
+        
+        return -1.0
+    }
+    
+    func getTotalRecurringExpenses() -> Double {
+        var totalExpense: Double
+        
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Expense")
+        
+        do {
+            let fetchedExpense = try context.executeFetchRequest(fetchRequest) as! [Expense]
+            
+            let food = Double((fetchedExpense.first?.food)!)
+            let rent = Double((fetchedExpense.first?.rent)!)
+            let util = Double((fetchedExpense.first?.util)!)
+            let transport = Double((fetchedExpense.first?.transport)!)
+            let other = Double((fetchedExpense.first?.other)!)
+            
+            totalExpense = food + rent + util + transport + other
+            
+            return totalExpense
+            
+        } catch {
+            print("Didn't get start month from core data for expense")
+        }
+        
+        
+        return -1.0
+
+    }
+
+    func getStartBalance() -> Double {
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        //let predicate = NSPredicate(format: "totalBalance == %@",  "totalBalance")
+        let fetchRequest = NSFetchRequest(entityName: "Balance")
+        //fetchRequest.predicate = predicate
+        
+        do {
+            let fetchedBalance = try context.executeFetchRequest(fetchRequest) as! [Balance]
+            if let balance = fetchedBalance.first?.totalBalance {
+                return Double(balance)
+            }
+            
+        } catch {
+            print("Didn't get start month from core data for balance")
+        }
+        
+        
+        return -1.0
+    }
+
+
+
     func getStartMonth() -> Int {
         let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         //let predicate = NSPredicate(format: "totalBalance == %@",  "totalBalance")
@@ -249,7 +382,18 @@ class ViewController: UIViewController {
         
         return -1
     }
+    
+    //-------------------------------------------------------------------------------------------
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Reports" {
+            let vc = segue.destinationViewController as! MonthTableVC
+            vc.monthNames = self.monthNames
+            vc.months = self.months
+            vc.currentBalance = self.currentBalance
+            vc.previousBalance = self.previousBalance
+        }
+    }
     
 }
 

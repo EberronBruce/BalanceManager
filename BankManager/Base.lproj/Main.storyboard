@@ -120,10 +120,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MonthCell" id="gWk-Uo-epu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReportsCell" id="4j3-3v-IJk" customClass="ReportsCell" customModule="BankManager" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gWk-Uo-epu" id="BSl-MI-CAc">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4j3-3v-IJk" id="aUA-K2-ZdY">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
@@ -140,6 +140,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="kLH-DQ-rEs" id="WoE-DX-7z7"/>
                         <segue destination="0Q7-Ul-hKM" kind="show" identifier="ReportSegue" id="AhV-p9-nd9"/>
                     </connections>
                 </viewController>
