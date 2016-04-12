@@ -462,10 +462,10 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="datePicker" destination="BLe-3L-ZNc" id="iye-B1-6Be"/>
-                        <outlet property="incomeTextField" destination="5W2-ai-niM" id="4Fl-LS-Kdt"/>
-                        <outlet property="perMonthLabel" destination="2jT-mZ-zCc" id="GGd-r7-iLb"/>
-                        <outlet property="pickerView" destination="Zda-zu-EHj" id="zNI-Rn-JeA"/>
+                        <outlet property="datePicker" destination="BLe-3L-ZNc" id="dKj-rL-uUl"/>
+                        <outlet property="incomeTextField" destination="5W2-ai-niM" id="H8z-aF-cex"/>
+                        <outlet property="perMonthLabel" destination="2jT-mZ-zCc" id="jOh-cJ-d2x"/>
+                        <outlet property="pickerView" destination="Zda-zu-EHj" id="p27-dd-TJK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxn-Sb-CyW" userLabel="First Responder" sceneMemberID="firstResponder"/>

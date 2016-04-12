@@ -17,85 +17,53 @@ class SetMonthState {
     
     let month = ["January","February","March","April","May","June","July","August","September","October","November", "December"]
     
-    func setMonth(monthNumber: Int) {
+    func getMonth(monthNumber: Int) -> String {
         
         switch monthNumber {
         case 1:
-            break
+            return month[0]
         case 2:
-            break
+            return month[1]
         case 3:
-            break
+            return month[2]
         case 4:
-            break
+            return month[3]
         case 5:
-            break
+            return month[4]
         case 6:
-            break
+            return month[5]
         case 7:
-            break
+            return month[6]
         case 8:
-            break
+            return month[7]
         case 9:
-            break
+            return month[8]
         case 10:
-            break
+            return month[9]
         case 11:
-            break
+            return month[10]
         case 12:
-            break
+            return month[11]
         default:
-            break
+            return "No Month"
         }
     }
     
-    func saveMonthAdHocExpense(monthName: String, adHoc: Double) {
-        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        let entity = NSEntityDescription.entityForName(monthName, inManagedObjectContext: context)
-        let month = Month(entity: entity!, insertIntoManagedObjectContext: context)
-        
-        month.adHocExpense = adHoc
-        
-        context.insertObject(month)
-        
-        do {
-            try context.save()
-        } catch {
-            print("Could not save balance")
-        }
-
-    }
+//    func saveMonthAdHocExpense(monthName: String, adHoc: Double) {
+//        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+//        let entity = NSEntityDescription.entityForName(monthName, inManagedObjectContext: context)
+//        let month = Month(entity: entity!, insertIntoManagedObjectContext: context)
+//        
+//        month.adHocExpense = adHoc
+//        
+//        context.insertObject(month)
+//        
+//        do {
+//            try context.save()
+//        } catch {
+//            print("Could not save balance")
+//        }
+//
+//    }
     
-    func getMonth(monthNumber: Int) {
-        
-        switch monthNumber {
-        case 1:
-            break
-        case 2:
-            break
-        case 3:
-            break
-        case 4:
-            break
-        case 5:
-            break
-        case 6:
-            break
-        case 7:
-            break
-        case 8:
-            break
-        case 9:
-            break
-        case 10:
-            break
-        case 11:
-            break
-        case 12:
-            break
-        default:
-            break
-        }
-
-    }
 }

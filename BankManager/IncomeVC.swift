@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var perMonthLabel: UILabel!
@@ -17,7 +18,7 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var adHoc: Bool!
     let incomeType = ["Salary","Investments"]
     var income: String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +26,7 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.dataSource = self
         
         income = incomeType.first
-
+        
         if adHoc == true {
             pickerView.hidden = true
             datePicker.hidden = false
@@ -58,9 +59,9 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     
-
+    
     @IBAction func datePickerValueChange(sender: AnyObject) {
-
+        
         
     }
     
@@ -73,22 +74,48 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
             let year = Int(getYear())
             
             if adHoc == true {
-                
+                //Need adHoc
                 
                 
             } else {
                 if income == "Salary" {
                     ShareRecuring.shared.salaryIncome = enteredIncome
+                    saveReccuringToCoreData(income!, payment: enteredIncome)
                 } else  if income == "Investments" {
                     ShareRecuring.shared.investmentIncome = enteredIncome
+                    saveReccuringToCoreData(income!, payment: enteredIncome)
                 }
             }
             
             print(month)
             print(year)
         }
-       
+        
     }
+    
+    func saveReccuringToCoreData(type: String, payment: Double) {
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let entity = NSEntityDescription.entityForName("Income", inManagedObjectContext: context)
+        let saveIncome = Income(entity: entity!, insertIntoManagedObjectContext: context)
+        
+         print(type)
+        
+        if type == "Salary" {
+            saveIncome.salary = payment
+        } else if type == "Investments" {
+            saveIncome.investments = payment
+        }
+        
+        context.insertObject(saveIncome)
+        
+        do {
+            try context.save()
+        } catch {
+            print("Could not save balance")
+        }
+        
+    }
+
     
     func getMonth() -> String {
         let dateFormatter = NSDateFormatter()
@@ -96,7 +123,7 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         let strDate = dateFormatter.stringFromDate(datePicker.date)
         
         return strDate
-
+        
     }
     
     
@@ -110,3 +137,4 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
 }
+

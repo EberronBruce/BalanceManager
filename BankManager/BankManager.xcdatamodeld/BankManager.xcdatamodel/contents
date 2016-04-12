@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
+    <entity name="April" syncable="YES">
+        <attribute name="adHocExpense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="adHocIncome" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="currentBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="previousBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="August" syncable="YES">
+        <attribute name="adHocExpense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="adHocIncome" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="currentBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="previousBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Balance" representedClassName=".Balance" syncable="YES">
         <attribute name="startMonth" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="startYear" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="totalBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
-    <entity name="Entity" syncable="YES"/>
+    <entity name="December" syncable="YES">
+        <attribute name="adHocExpense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="adHocIncome" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="currentBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="previousBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Expense" representedClassName=".Expense" syncable="YES">
         <attribute name="food" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="other" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -13,24 +33,46 @@
         <attribute name="transport" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="util" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
+    <entity name="February" syncable="YES">
+        <attribute name="adHocExpense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="adHocIncome" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="currentBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="previousBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Income" representedClassName=".Income" syncable="YES">
         <attribute name="investments" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="salary" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
-    <entity name="Month" representedClassName=".Month" syncable="YES">
+    <entity name="January" representedClassName=".Month" syncable="YES">
         <attribute name="adHocExpense" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="adHocIncome" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="currentBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="monthNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="previousBalance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="July" syncable="YES"/>
+    <entity name="June" syncable="YES"/>
+    <entity name="March" syncable="YES"/>
+    <entity name="May" syncable="YES"/>
+    <entity name="November" syncable="YES"/>
+    <entity name="October" syncable="YES"/>
+    <entity name="September" syncable="YES"/>
     <elements>
         <element name="Expense" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="Income" positionX="-54" positionY="36" width="128" height="73"/>
         <element name="Balance" positionX="-36" positionY="54" width="128" height="88"/>
-        <element name="Month" positionX="-18" positionY="63" width="128" height="148"/>
-        <element name="Entity" positionX="0" positionY="144" width="128" height="45"/>
+        <element name="January" positionX="-18" positionY="63" width="128" height="118"/>
+        <element name="February" positionX="0" positionY="144" width="128" height="120"/>
+        <element name="March" positionX="18" positionY="108" width="128" height="45"/>
+        <element name="April" positionX="36" positionY="117" width="128" height="120"/>
+        <element name="May" positionX="-9" positionY="63" width="128" height="45"/>
+        <element name="June" positionX="0" positionY="72" width="128" height="45"/>
+        <element name="July" positionX="9" positionY="81" width="128" height="45"/>
+        <element name="August" positionX="18" positionY="90" width="128" height="120"/>
+        <element name="September" positionX="27" positionY="99" width="128" height="45"/>
+        <element name="October" positionX="36" positionY="108" width="128" height="45"/>
+        <element name="November" positionX="45" positionY="117" width="128" height="45"/>
+        <element name="December" positionX="-9" positionY="63" width="128" height="120"/>
     </elements>
 </model>

@@ -17,21 +17,20 @@
 		7AFBC39E1CBA0C7100FD1DA3 /* BankManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC39D1CBA0C7100FD1DA3 /* BankManagerUITests.swift */; };
 		7AFBC3AF1CBA26F100FD1DA3 /* BalanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3AE1CBA26F100FD1DA3 /* BalanceVC.swift */; };
 		7AFBC3B11CBA272700FD1DA3 /* KindIncomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3B01CBA272700FD1DA3 /* KindIncomeVC.swift */; };
-		7AFBC3B31CBA274B00FD1DA3 /* IncomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3B21CBA274B00FD1DA3 /* IncomeVC.swift */; };
 		7AFBC3B51CBA278D00FD1DA3 /* KindExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3B41CBA278D00FD1DA3 /* KindExpenseVC.swift */; };
 		7AFBC3B71CBA27A800FD1DA3 /* ExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3B61CBA27A800FD1DA3 /* ExpenseVC.swift */; };
 		7AFBC3B91CBA27E600FD1DA3 /* MonthTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3B81CBA27E600FD1DA3 /* MonthTableVC.swift */; };
 		7AFBC3BB1CBA27FB00FD1DA3 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3BA1CBA27FB00FD1DA3 /* ReportVC.swift */; };
 		7AFBC3D31CBA535500FD1DA3 /* ShareRecuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3D21CBA535500FD1DA3 /* ShareRecuring.swift */; };
 		7AFBC3DD1CBAA4BC00FD1DA3 /* SetMonthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3DC1CBAA4BC00FD1DA3 /* SetMonthState.swift */; };
-		7AFBC3EA1CBBBF1600FD1DA3 /* Month+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3E41CBBBF1600FD1DA3 /* Month+CoreDataProperties.swift */; };
-		7AFBC3EB1CBBBF1600FD1DA3 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3E51CBBBF1600FD1DA3 /* Month.swift */; };
 		7AFBC3EC1CBBBF1600FD1DA3 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3E61CBBBF1600FD1DA3 /* Expense+CoreDataProperties.swift */; };
 		7AFBC3ED1CBBBF1600FD1DA3 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3E71CBBBF1600FD1DA3 /* Expense.swift */; };
 		7AFBC3EE1CBBBF1600FD1DA3 /* Income+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3E81CBBBF1600FD1DA3 /* Income+CoreDataProperties.swift */; };
 		7AFBC3EF1CBBBF1600FD1DA3 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3E91CBBBF1600FD1DA3 /* Income.swift */; };
 		7AFBC3F21CBBC24900FD1DA3 /* Balance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3F01CBBC24900FD1DA3 /* Balance+CoreDataProperties.swift */; };
 		7AFBC3F31CBBC24900FD1DA3 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3F11CBBC24900FD1DA3 /* Balance.swift */; };
+		7AFBC3F51CBD04F900FD1DA3 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3F41CBD04F800FD1DA3 /* Month.swift */; };
+		7AFBC3F71CBD081500FD1DA3 /* IncomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBC3F61CBD081500FD1DA3 /* IncomeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,21 +67,20 @@
 		7AFBC39F1CBA0C7100FD1DA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AFBC3AE1CBA26F100FD1DA3 /* BalanceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceVC.swift; sourceTree = "<group>"; };
 		7AFBC3B01CBA272700FD1DA3 /* KindIncomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindIncomeVC.swift; sourceTree = "<group>"; };
-		7AFBC3B21CBA274B00FD1DA3 /* IncomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeVC.swift; sourceTree = "<group>"; };
 		7AFBC3B41CBA278D00FD1DA3 /* KindExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KindExpenseVC.swift; sourceTree = "<group>"; };
 		7AFBC3B61CBA27A800FD1DA3 /* ExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseVC.swift; sourceTree = "<group>"; };
 		7AFBC3B81CBA27E600FD1DA3 /* MonthTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableVC.swift; sourceTree = "<group>"; };
 		7AFBC3BA1CBA27FB00FD1DA3 /* ReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		7AFBC3D21CBA535500FD1DA3 /* ShareRecuring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareRecuring.swift; sourceTree = "<group>"; };
 		7AFBC3DC1CBAA4BC00FD1DA3 /* SetMonthState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetMonthState.swift; sourceTree = "<group>"; };
-		7AFBC3E41CBBBF1600FD1DA3 /* Month+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Month+CoreDataProperties.swift"; path = "../Month+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7AFBC3E51CBBBF1600FD1DA3 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Month.swift; path = ../Month.swift; sourceTree = "<group>"; };
 		7AFBC3E61CBBBF1600FD1DA3 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Expense+CoreDataProperties.swift"; path = "../Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7AFBC3E71CBBBF1600FD1DA3 /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Expense.swift; path = ../Expense.swift; sourceTree = "<group>"; };
 		7AFBC3E81CBBBF1600FD1DA3 /* Income+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Income+CoreDataProperties.swift"; path = "../Income+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7AFBC3E91CBBBF1600FD1DA3 /* Income.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Income.swift; path = ../Income.swift; sourceTree = "<group>"; };
 		7AFBC3F01CBBC24900FD1DA3 /* Balance+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Balance+CoreDataProperties.swift"; path = "../Balance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7AFBC3F11CBBC24900FD1DA3 /* Balance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Balance.swift; path = ../Balance.swift; sourceTree = "<group>"; };
+		7AFBC3F41CBD04F800FD1DA3 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		7AFBC3F61CBD081500FD1DA3 /* IncomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +166,7 @@
 			children = (
 				7AFBC3CC1CBA45B000FD1DA3 /* CoreData */,
 				7AFBC3DC1CBAA4BC00FD1DA3 /* SetMonthState.swift */,
+				7AFBC3F41CBD04F800FD1DA3 /* Month.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -187,11 +186,11 @@
 				7AFBC37C1CBA0C7000FD1DA3 /* ViewController.swift */,
 				7AFBC3AE1CBA26F100FD1DA3 /* BalanceVC.swift */,
 				7AFBC3B01CBA272700FD1DA3 /* KindIncomeVC.swift */,
-				7AFBC3B21CBA274B00FD1DA3 /* IncomeVC.swift */,
 				7AFBC3B41CBA278D00FD1DA3 /* KindExpenseVC.swift */,
 				7AFBC3B61CBA27A800FD1DA3 /* ExpenseVC.swift */,
 				7AFBC3B81CBA27E600FD1DA3 /* MonthTableVC.swift */,
 				7AFBC3BA1CBA27FB00FD1DA3 /* ReportVC.swift */,
+				7AFBC3F61CBD081500FD1DA3 /* IncomeVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -199,8 +198,6 @@
 		7AFBC3CC1CBA45B000FD1DA3 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				7AFBC3E41CBBBF1600FD1DA3 /* Month+CoreDataProperties.swift */,
-				7AFBC3E51CBBBF1600FD1DA3 /* Month.swift */,
 				7AFBC3E61CBBBF1600FD1DA3 /* Expense+CoreDataProperties.swift */,
 				7AFBC3E71CBBBF1600FD1DA3 /* Expense.swift */,
 				7AFBC3E81CBBBF1600FD1DA3 /* Income+CoreDataProperties.swift */,
@@ -352,20 +349,19 @@
 			files = (
 				7AFBC3D31CBA535500FD1DA3 /* ShareRecuring.swift in Sources */,
 				7AFBC3DD1CBAA4BC00FD1DA3 /* SetMonthState.swift in Sources */,
+				7AFBC3F51CBD04F900FD1DA3 /* Month.swift in Sources */,
 				7AFBC3B91CBA27E600FD1DA3 /* MonthTableVC.swift in Sources */,
 				7AFBC3831CBA0C7000FD1DA3 /* BankManager.xcdatamodeld in Sources */,
-				7AFBC3B31CBA274B00FD1DA3 /* IncomeVC.swift in Sources */,
 				7AFBC3AF1CBA26F100FD1DA3 /* BalanceVC.swift in Sources */,
 				7AFBC3F31CBBC24900FD1DA3 /* Balance.swift in Sources */,
 				7AFBC3F21CBBC24900FD1DA3 /* Balance+CoreDataProperties.swift in Sources */,
 				7AFBC3ED1CBBBF1600FD1DA3 /* Expense.swift in Sources */,
-				7AFBC3EA1CBBBF1600FD1DA3 /* Month+CoreDataProperties.swift in Sources */,
+				7AFBC3F71CBD081500FD1DA3 /* IncomeVC.swift in Sources */,
 				7AFBC3B71CBA27A800FD1DA3 /* ExpenseVC.swift in Sources */,
 				7AFBC37D1CBA0C7000FD1DA3 /* ViewController.swift in Sources */,
 				7AFBC3BB1CBA27FB00FD1DA3 /* ReportVC.swift in Sources */,
 				7AFBC37B1CBA0C7000FD1DA3 /* AppDelegate.swift in Sources */,
 				7AFBC3EE1CBBBF1600FD1DA3 /* Income+CoreDataProperties.swift in Sources */,
-				7AFBC3EB1CBBBF1600FD1DA3 /* Month.swift in Sources */,
 				7AFBC3B11CBA272700FD1DA3 /* KindIncomeVC.swift in Sources */,
 				7AFBC3EC1CBBBF1600FD1DA3 /* Expense+CoreDataProperties.swift in Sources */,
 				7AFBC3EF1CBBBF1600FD1DA3 /* Income.swift in Sources */,
