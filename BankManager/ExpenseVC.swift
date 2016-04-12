@@ -18,6 +18,9 @@ class ExpenseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
     var adHoc: Bool!
     var expensiveType = ["Food","Rent","Utilities","Transportation","Other"]
     var expense: String!
+    var startYear: Int!
+    var startMonth: Int!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +42,25 @@ class ExpenseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
             datePicker.hidden = true
             perMonthLabel.text = "Per Month"
         }
+        
+        getStartDate()
 
+    }
+    
+    func getStartDate() {
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        //doing a fetch request of the collections entity
+        let collectionRequest = NSFetchRequest(entityName: "Balance")
+        do{
+            let request = try context.executeFetchRequest(collectionRequest) as! [Balance]
+            
+            startYear = Int((request.first?.startYear)!)
+            startMonth = Int((request.first?.startMonth)!)
+            
+        } catch {
+            print("Couldn't get start date in IncomeVC")
+        }
+        
     }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -65,7 +86,12 @@ class ExpenseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
             let enteredIncome = Double(expenseTextField.text!)!
             
             if adHoc == true {
-                //Need adHoc
+                
+                let month = Int(getMonth())!
+                let year = Int(getYear())!
+                
+                saveMonthAdHoc(month, year: year, payment: enteredIncome)
+
                 
                 
             } else {
@@ -73,6 +99,33 @@ class ExpenseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
             }
         }
     }
+    //-----------------------------------------------------------------------
+    
+    func saveMonthAdHoc(monthNumber: Int, year: Int, payment: Double) {
+        if let loadedMonth = NSUserDefaults.standardUserDefaults().objectForKey("Month") as? NSData {
+            if let monthArray = NSKeyedUnarchiver.unarchiveObjectWithData(loadedMonth) as? [Month] {
+                
+                if ((startYear+1) >= year) && (monthNumber < startMonth) {
+                    showYearAlert()
+                } else {
+                    
+                    for month in monthArray {
+                        if month.month == monthNumber {
+                            month.expense = payment
+                            
+                        }
+                    }
+                    
+                    let monthData = NSKeyedArchiver.archivedDataWithRootObject(monthArray)
+                    
+                    NSUserDefaults.standardUserDefaults().setObject(monthData, forKey: "Month")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                }
+            }
+        }
+    }
+
+    
     //------------------------------------------------------------------------
     func showYearAlert() {
         if #available(iOS 8.0, *) {

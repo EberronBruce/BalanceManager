@@ -32,7 +32,7 @@ class Month: NSObject, NSCoding {
         }
     }
     
-    var adHocExpense: Double {
+    var expense: Double {
         get {
             return _adHocExpense
         }

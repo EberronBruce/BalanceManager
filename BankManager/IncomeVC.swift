@@ -38,6 +38,8 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
             datePicker.hidden = true
             perMonthLabel.text = "Per Month"
         }
+        
+        getStartDate()
     }
     
     func getStartDate() {
@@ -111,8 +113,6 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func saveMonthAdHoc(monthNumber: Int, year: Int, payment: Double) {
-        
-        
         if let loadedMonth = NSUserDefaults.standardUserDefaults().objectForKey("Month") as? NSData {
             if let monthArray = NSKeyedUnarchiver.unarchiveObjectWithData(loadedMonth) as? [Month] {
                 
@@ -131,13 +131,9 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
                     
                     NSUserDefaults.standardUserDefaults().setObject(monthData, forKey: "Month")
                     NSUserDefaults.standardUserDefaults().synchronize()
-                    
-                    
                 }
-                
             }
         }
-
     }
     
     func showYearAlert() {
