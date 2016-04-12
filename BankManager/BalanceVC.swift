@@ -60,25 +60,30 @@ class BalanceVC: UIViewController {
         return strDate
         
     }
-
+    
 
     func saveBalanceIntoCoreData(enterNumber: Double, month: Int, year: Int) {
         let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        let entity = NSEntityDescription.entityForName("Balance", inManagedObjectContext: context)
-        let balance = Balance(entity: entity!, insertIntoManagedObjectContext: context)
+        //let predicate = NSPredicate(format: "totalBalance == %@",  "totalBalance")
+        let fetchRequest = NSFetchRequest(entityName: "Balance")
+        //fetchRequest.predicate = predicate
         
-        balance.totalBalance = enterNumber
-        balance.startMonth = month
-        balance.startYear = year
-        
-        context.insertObject(balance)
+        do {
+            let fetchedEntities = try context.executeFetchRequest(fetchRequest) as! [Balance]
+            fetchedEntities.first?.totalBalance = enterNumber
+            fetchedEntities.first?.startYear = year
+            fetchedEntities.first?.startMonth = month
+            // ... Update additional properties with new values
+        } catch {
+            print("Didn't get entity from core data for balance")
+        }
         
         do {
             try context.save()
         } catch {
-            print("Could not save balance")
+            print("Cant Save Balance in BalanceVC")
         }
-    
+        
     }
 
 }

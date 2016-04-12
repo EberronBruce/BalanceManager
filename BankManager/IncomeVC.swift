@@ -18,6 +18,8 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var adHoc: Bool!
     let incomeType = ["Salary","Investments"]
     var income: String?
+    var startYear: Int!
+    var startMonth: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,22 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
             datePicker.hidden = true
             perMonthLabel.text = "Per Month"
         }
+    }
+    
+    func getStartDate() {
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        //doing a fetch request of the collections entity
+        let collectionRequest = NSFetchRequest(entityName: "Balance")
+        do{
+            let request = try context.executeFetchRequest(collectionRequest) as! [Balance]
+            
+            startYear = Int((request.first?.startYear)!)
+            startMonth = Int((request.first?.startMonth)!)
+            
+        } catch {
+            print("Couldn't get start date in IncomeVC")
+        }
+
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -77,8 +95,7 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
                 let month = Int(getMonth())!
                 let year = Int(getYear())!
                 
-                saveMonthAdHoc(month, year: year)
-                
+                saveMonthAdHoc(month, year: year, payment: enteredIncome)
                 
             } else {
                 if income == "Salary" {
@@ -93,14 +110,29 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
-    func saveMonthAdHoc(monthNumber: Int, year: Int) {
+    func saveMonthAdHoc(monthNumber: Int, year: Int, payment: Double) {
+        
+        
         if let loadedMonth = NSUserDefaults.standardUserDefaults().objectForKey("Month") as? NSData {
             if let monthArray = NSKeyedUnarchiver.unarchiveObjectWithData(loadedMonth) as? [Month] {
                 
-                for month in monthArray {
-                    if month.month == monthNumber {
-                        print(month.name)
+                if ((startYear+1) >= year) && (monthNumber < startMonth) {
+                    showYearAlert()
+                } else {
+                    
+                    for month in monthArray {
+                        if month.month == monthNumber {
+                            month.income = payment
+                            
+                        }
                     }
+                    
+                    let monthData = NSKeyedArchiver.archivedDataWithRootObject(monthArray)
+                    
+                    NSUserDefaults.standardUserDefaults().setObject(monthData, forKey: "Month")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    
+                    
                 }
                 
             }
@@ -108,27 +140,53 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     }
     
-    func saveReccuringToCoreData(type: String, payment: Double) {
-        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        let entity = NSEntityDescription.entityForName("Income", inManagedObjectContext: context)
-        let saveIncome = Income(entity: entity!, insertIntoManagedObjectContext: context)
-        
-         print(type)
-        
-        if type == "Salary" {
-            saveIncome.salary = payment
-        } else if type == "Investments" {
-            saveIncome.investments = payment
+    func showYearAlert() {
+        if #available(iOS 8.0, *) {
+            let alert = UIAlertController(title: "Year is Wrong", message: "Please Select A Year within the Start Date", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        } else {
+            // Fallback on earlier versions
+            let errorAlert: UIAlertView = UIAlertView()
+            
+            errorAlert.delegate = self
+            
+            errorAlert.title = "Oops"
+            errorAlert.message = "Could not create account!"
+            errorAlert.addButtonWithTitle("Dismiss")
+            
+            errorAlert.show()
         }
-        
-        context.insertObject(saveIncome)
+
+    }
+    
+    
+    func saveReccuringToCoreData(type: String, payment: Double) {
+        print(type)
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        //let predicate = NSPredicate(format: "totalBalance == %@",  "totalBalance")
+        let fetchRequest = NSFetchRequest(entityName: "Income")
+        //fetchRequest.predicate = predicate
+
+        do {
+            let saveIncome = try context.executeFetchRequest(fetchRequest) as! [Income]
+            
+            if type == "Salary" {
+                saveIncome.first?.salary = payment
+            } else if type == "Investments" {
+                saveIncome.first?.investments = payment
+            }
+
+        } catch {
+            print("Didn't get entity from core data for income")
+        }
         
         do {
             try context.save()
         } catch {
-            print("Could not save balance")
+            print("Cant Save Balance in BalanceVC")
         }
-        
     }
 
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ExpenseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     @IBOutlet weak var perMonthLabel: UILabel!
@@ -68,29 +69,103 @@ class ExpenseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
                 
                 
             } else {
-                switch expense {
-                    case "Food":
-                        ShareRecuring.shared.foodExpense = enteredIncome
-                    break
-                    case "Rent":
-                        ShareRecuring.shared.rentExpense = enteredIncome
-                    break
-                    case "Utilities":
-                        ShareRecuring.shared.utilExpense = enteredIncome
-                    break
-                    case "Transportation":
-                        ShareRecuring.shared.transportExpense = enteredIncome
-                    break
-                    case "Other":
-                        ShareRecuring.shared.otherExpense = enteredIncome
-                    break
-                default:
-                    break
-                }
+                 saveReccuringToCoreData(expense, payment: enteredIncome)
             }
         }
-
     }
+    //------------------------------------------------------------------------
+    func showYearAlert() {
+        if #available(iOS 8.0, *) {
+            let alert = UIAlertController(title: "Year is Wrong", message: "Please Select A Year within the Start Date", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        } else {
+            // Fallback on earlier versions
+            let errorAlert: UIAlertView = UIAlertView()
+            
+            errorAlert.delegate = self
+            
+            errorAlert.title = "Oops"
+            errorAlert.message = "Could not create account!"
+            errorAlert.addButtonWithTitle("Dismiss")
+            
+            errorAlert.show()
+        }
+        
+    }
+
+    //------------------------------------------------------------------------
+    func saveReccuringToCoreData(type: String, payment: Double) {
+        print(type)
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        //let predicate = NSPredicate(format: "totalBalance == %@",  "totalBalance")
+        let fetchRequest = NSFetchRequest(entityName: "Expense")
+        //fetchRequest.predicate = predicate
+        
+        do {
+            let saveExpense = try context.executeFetchRequest(fetchRequest) as! [Expense]
+
+            switch type {
+            case "Food":
+                ShareRecuring.shared.foodExpense = payment
+                saveExpense.first?.food = payment
+                break
+            case "Rent":
+                ShareRecuring.shared.rentExpense = payment
+                saveExpense.first?.rent = payment
+                break
+            case "Utilities":
+                ShareRecuring.shared.utilExpense = payment
+                saveExpense.first?.util = payment
+                break
+            case "Transportation":
+                ShareRecuring.shared.transportExpense = payment
+                saveExpense.first?.transport = payment
+                break
+            case "Other":
+                ShareRecuring.shared.otherExpense = payment
+                saveExpense.first?.other = payment
+                break
+            default:
+                break
+            }
+    
+                       
+            } catch {
+            print("Didn't get entity from core data for income")
+        }
+        
+        
+        do {
+            try context.save()
+        } catch {
+            print("Cant Save Balance in BalanceVC")
+        }
+}
+
+    
+    //-------------------------------------------------------------------------
+    func getMonth() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM"
+        let strDate = dateFormatter.stringFromDate(datePicker.date)
+        
+        return strDate
+        
+    }
+    
+    
+    func getYear() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let strDate = dateFormatter.stringFromDate(datePicker.date)
+        
+        return strDate
+        
+    }
+    //---------------------------------------------------------------------------
+
 
 
 }

@@ -20,11 +20,12 @@ class ViewController: UIViewController {
             
             let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
             //doing a fetch request of the collections entity
-            let request = NSFetchRequest(entityName: "Balance")
+            let request = NSFetchRequest(entityName: "Income")
             do{
-                let results = try context.executeFetchRequest(request) as! [Balance]
+                let results = try context.executeFetchRequest(request) as! [Income]
                 
-                print(results[0].startYear)
+                print(results.first?.investments)
+                print(results.first?.salary)
                 
                 
             } catch {
@@ -46,13 +47,16 @@ class ViewController: UIViewController {
             saveDefaultBalance(month, year: year)
             saveDefaultExpense()
             saveDefaultIncome()
+            
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstRun")
+            NSUserDefaults.standardUserDefaults().synchronize()
          
         }
 
     }
     
     func saveDefaultIncome() {
-        
+        print("Save Default Income")
         let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         let entity = NSEntityDescription.entityForName("Income", inManagedObjectContext: context)
         let income = Income(entity: entity!, insertIntoManagedObjectContext: context)
@@ -72,6 +76,7 @@ class ViewController: UIViewController {
     }
     
     func saveDefaultExpense() {
+        print("Save Default Expense")
         let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         let entity = NSEntityDescription.entityForName("Expense", inManagedObjectContext: context)
         let expense = Expense(entity: entity!, insertIntoManagedObjectContext: context)
@@ -94,18 +99,13 @@ class ViewController: UIViewController {
     }
     
     func saveDefaultMonths(year: Int) {
-   
+        print("Save Default Months")
         var months = [Month]()
-        
-        
         for i in 1...12 {
             let month = Month(month: i, year: year)
             months.append(month)
         }
-        
-        
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstRun")
-        NSUserDefaults.standardUserDefaults().synchronize()
+
         
         let monthData = NSKeyedArchiver.archivedDataWithRootObject(months)
         
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
     }
     
     func saveDefaultBalance(month: Int, year: Int) {
-        
+        print("Save Default Balance")
         let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         let entity = NSEntityDescription.entityForName("Balance", inManagedObjectContext: context)
         let balance = Balance(entity: entity!, insertIntoManagedObjectContext: context)
