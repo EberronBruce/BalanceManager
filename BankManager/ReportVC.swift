@@ -25,6 +25,9 @@ class ReportVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        previousBalanceLabel.text = "Previous Balance: $\(previousBalance)"
+        currentBalanceLabel.text = "End of Month Balance: $\(currentBalance)"
+        
         let expense = getExpenses()
         
         let cost = expense.expenses
