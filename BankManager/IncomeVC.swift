@@ -108,7 +108,7 @@ class IncomeVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
                     saveReccuringToCoreData(income!, payment: enteredIncome)
                 }
             }
-            
+            self.navigationController?.popViewControllerAnimated(true)
         }
     }
     

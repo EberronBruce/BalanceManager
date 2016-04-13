@@ -157,10 +157,46 @@
                         <viewControllerLayoutGuide type="bottom" id="TYT-WI-SjL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="P7N-7n-BAP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vzz-T2-0e5" userLabel="ChartView" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="370"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="370" id="Uc0-Bo-LR1"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwu-lr-qg3">
+                                <rect key="frame" x="279" y="405" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idc-RY-5ei">
+                                <rect key="frame" x="279" y="451" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vzz-T2-0e5" firstAttribute="leading" secondItem="P7N-7n-BAP" secondAttribute="leading" id="DIJ-Df-wsa"/>
+                            <constraint firstItem="Idc-RY-5ei" firstAttribute="top" secondItem="lwu-lr-qg3" secondAttribute="bottom" constant="25" id="SNs-bK-fiX"/>
+                            <constraint firstItem="lwu-lr-qg3" firstAttribute="top" secondItem="Vzz-T2-0e5" secondAttribute="bottom" constant="35" id="SSx-KC-1Vs"/>
+                            <constraint firstAttribute="trailing" secondItem="Vzz-T2-0e5" secondAttribute="trailing" id="V0N-Tt-VOy"/>
+                            <constraint firstItem="lwu-lr-qg3" firstAttribute="centerX" secondItem="P7N-7n-BAP" secondAttribute="centerX" id="Wu8-sg-br5"/>
+                            <constraint firstItem="Vzz-T2-0e5" firstAttribute="top" secondItem="iti-fQ-wqi" secondAttribute="bottom" id="e1j-bI-rj8"/>
+                            <constraint firstItem="Idc-RY-5ei" firstAttribute="centerX" secondItem="P7N-7n-BAP" secondAttribute="centerX" id="nZD-0I-eJR"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="currentBalanceLabel" destination="Idc-RY-5ei" id="nJJ-fI-IIE"/>
+                        <outlet property="pieChartView" destination="Vzz-T2-0e5" id="6gn-HI-IkJ"/>
+                        <outlet property="previousBalanceLabel" destination="lwu-lr-qg3" id="hwz-Ic-YBE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2A-x7-jxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

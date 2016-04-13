@@ -62,6 +62,10 @@ class ExpenseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         }
         
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        expenseTextField.endEditing(true)
+    }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -97,6 +101,7 @@ class ExpenseVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
             } else {
                  saveReccuringToCoreData(expense, payment: enteredIncome)
             }
+            self.navigationController?.popViewControllerAnimated(true)
         }
     }
     //-----------------------------------------------------------------------
